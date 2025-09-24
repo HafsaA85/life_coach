@@ -1,0 +1,17 @@
+{% extends 'clients/base.html' %}
+{% block title %}Client Details{% endblock %}
+{% block content %}
+  <h2>{{ client.first_name }} {{ client.last_name }}</h2>
+  <div class="card">
+    <p><strong>Email:</strong> {{ client.email }}</p>
+    <p><strong>Phone:</strong> {{ client.phone|default:'—' }}</p>
+    <p><strong>Goal:</strong> {{ client.goal|linebreaks }}</p>
+    <p><strong>Notes:</strong> {{ client.notes|linebreaks }}</p>
+    <p><small>Added: {{ client.created_at }}</small></p>
+    <p>
+      <a href="{% url 'client_edit' client.pk %}">Edit</a> |
+      <a href="{% url 'client_delete' client.pk %}">Delete</a> |
+      <a href="{% url 'client_list' %}">Back to list</a>
+    </p>
+  </div>
+{% endblock %}

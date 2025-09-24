@@ -1,0 +1,52 @@
+*# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+
+# Virtual Environment
+venv/
+env/
+ENV/
+*.env
+
+# Django Stuff
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+db.sqlite3
+media/
+staticfiles/
+
+# Environment & Secrets
+.env
+.env.local
+*.secret
+*.json
+
+# IDE/Editor Specific
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# pytest / Coverage / mypy
+.coverage
+htmlcov/
+*.cover
+*.py,cover
+.tox/
+.mypy_cache/
+.pytest_cache/
+
+# Node (if using npm for frontend)
+node_modules/
+build/

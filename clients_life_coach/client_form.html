@@ -1,0 +1,25 @@
+{% extends 'clients/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+  <h2>{{ title }}</h2>
+  <div class="card">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form %}
+        <div>
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+          {% for error in field.errors %}
+            <div style="color: red">{{ error }}</div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+      <div class="actions">
+        <button type="submit">Save</button>
+        <a href="{% url 'client_list' %}">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

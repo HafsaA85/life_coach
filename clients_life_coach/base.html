@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life Coaching — {% block title %}{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css" rel="stylesheet">
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 2rem; }
+    header { margin-bottom: 1.5rem; }
+    nav a { margin-right: 1rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .card { padding: 1rem; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 1rem; }
+    form input, form textarea { width: 100%; padding: .5rem; margin-bottom: .5rem; }
+    .actions { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+<h1>Life Coaching</h1>
+      <nav>
+        <a href="/">Clients</a>
+        <a href="/clients/add/">Add Client</a>
+        <a href="/admin/">Admin</a>
+      </nav>
+    </header>
+    {% if messages %}
+      <ul>
+        {% for m in messages %}
+          <li>{{ m }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+    <footer>
+      <p style="font-size: .9rem; color: #555">&copy; Life Coaching</p>
+    </footer>
+  </div>
+</body>
+</html>

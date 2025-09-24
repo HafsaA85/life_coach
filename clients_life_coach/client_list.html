@@ -1,0 +1,29 @@
+{% extends 'clients/base.html' %}
+{% block title %}Clients{% endblock %}
+{% block content %}
+  <h2>Clients</h2>
+  {% if clients %}
+    {% for client in clients %}
+      <div class="card">
+        <h3><a href="{% url 'client_detail' client.pk %}">{{ client.first_name }} {{ client.last_name }}</a></h3>
+        <p><strong>Email:</strong> {{ client.email }}</p>
+        <p><strong>Phone:</strong> {{ client.phone|default:'—' }}</p>
+        <p><strong>Goal:</strong> {{ client.goal|truncatechars:120 }}</p>
+        <p>
+          <a href="{% url 'client_edit' client.pk %}">Edit</a>
+          &nbsp;|&nbsp;
+          <a href="{% url 'client_delete' client.pk %}">Delete</a>
+        </p>
+      </div>
+    {% endfor %}
+    {% if is_paginated %}
+      <div>
+        {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">Prev</a>{% endif %}
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Next</a>{% endif %}
+      </div>
+    {% endif %}
+  {% else %}
+    <p>No clients yet. <a href="{% url 'client_add' %}">Add one</a>.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'clients/base.html' %}
+{% block title %}Confirm Delete{% endblock %}
+{% block content %}
+  <h2>Confirm delete</h2>
+  <div class="card">
+    <p>Are you sure you want to delete <strong>{{ client.first_name }} {{ client.last_name }}</strong> ({{ client.email }})?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Yes, delete</button>
+      <a href="{% url 'client_detail' client.pk %}">Cancel</a>
+    </form>
+  </div>
+{% endblock %}
