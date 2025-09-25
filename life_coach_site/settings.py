@@ -3,17 +3,21 @@ from pathlib import Path
 from decouple import config
 import dj_database_url
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-import os
-SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = True
-ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
-import os
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+DATABASES = {
+    'default': dj_database_url.parse(
+        config('DATABASE_URL', default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
+    )
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
