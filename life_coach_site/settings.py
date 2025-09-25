@@ -19,14 +19,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / "staticfiles"  # where collectstatic puts everything
 
 
-DATABASES = {
-    'default': dj_database_url.parse(
-        config('DATABASE_URL', default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
-    )
-}
-
-
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -78,10 +70,10 @@ WSGI_APPLICATION = 'life_coach_site.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
-DATABASE_URL = "postgresql://neondb_owner:npg_HVwn4IjR0uzo@ep-tiny-sky-agei7xbq.c-2.eu-central-1.aws.neon.tech/skew_rail_thing_890481"
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(
+        config('DATABASE_URL', default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
