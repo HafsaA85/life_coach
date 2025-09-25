@@ -1,10 +1,13 @@
 import os
 from pathlib import Path
 from decouple import config
+import dj_database_url
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+import os
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = True
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
@@ -48,11 +51,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'life_coach_site.wsgi.application'
 
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+print("DATABASE_URL:", os.environ.get("DATABASE_URL"))
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+DATABASE_URL = "postgresql://neondb_owner:npg_HVwn4IjR0uzo@ep-tiny-sky-agei7xbq.c-2.eu-central-1.aws.neon.tech/skew_rail_thing_890481"
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 AUTH_PASSWORD_VALIDATORS = [

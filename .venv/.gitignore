@@ -30,6 +30,7 @@ staticfiles/
 .env.local
 *.secret
 *.json
+.venv
 
 # IDE/Editor Specific
 .vscode/
