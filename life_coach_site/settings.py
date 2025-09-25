@@ -19,6 +19,8 @@ DATABASES = {
     )
 }
 
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -63,7 +65,7 @@ WSGI_APPLICATION = 'life_coach_site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-print("DATABASE_URL:", os.environ.get("DATABASE_URL"))
+#print("DATABASE_URL:", os.environ.get("DATABASE_URL"))
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
