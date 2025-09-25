@@ -11,9 +11,12 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",   # project-level static folder
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"  # where collectstatic puts everything
 
 
 DATABASES = {
